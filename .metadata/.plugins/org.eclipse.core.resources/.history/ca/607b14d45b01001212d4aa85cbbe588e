@@ -1,7 +1,0 @@
-object test {
-  println("Welcome to the Scala worksheet")
- 	val x = 1
-  def increase(i: Int) = i + 1
-  val y = increase(x)
-	increase(increase(increase(y)))           //> res0: Int = 5
-}

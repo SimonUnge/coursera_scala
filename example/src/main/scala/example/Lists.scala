@@ -23,11 +23,16 @@ object Lists {
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
-  def sum(xs: List[Int]): Int = xs.isEmpty match{
-  	case true => 0
-  	case false => xs.head + sum(xs.tail)
+  def sum(xs: List[Int]): Int = {
+    if (xs.isEmpty)
+      0
+    else
+      sum(xs.tail) + xs.head
   }
 
+  
+
+  
   /**
    * This method returns the largest element in a list of integers. If the
    * list `xs` is empty it throws a `java.util.NoSuchElementException`.
@@ -43,18 +48,19 @@ object Lists {
    */
   def max(xs: List[Int]): Int = {
     val max = xs.head
-    
-    def getMaxfromNonEmptyList(xs: List[Int], max: Int): Int = max < xs.head match{
-      case true => val newMax = xs.head
-    		  	   maxAux(xs.tail, newMax)
+
+    def getMaxfromNonEmptyList(xs: List[Int], max: Int): Int = max < xs.head match {
+      case true =>
+        val newMax = xs.head
+        maxAux(xs.tail, newMax)
       case false => maxAux(xs.tail, max)
     }
-    
+
     def maxAux(xs: List[Int], max: Int): Int = xs.isEmpty match {
       case true => max
       case false => getMaxfromNonEmptyList(xs, max)
     }
-    
+
     maxAux(xs, max)
   }
 }
